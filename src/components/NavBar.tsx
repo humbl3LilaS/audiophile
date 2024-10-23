@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
 	return (
 		<header>
-			<nav className="py-9 px-6 flex justify-between items-center bg-darkBlack md:border-b-2 md:border-b-white/10 lg:py-11">
+			<nav className="py-9 px-6 flex justify-between items-center  border-b-2 border-b-white/10 bg-darkBlack lg:py-11">
 				<img
 					src="/icons/icon-hamburger.svg"
 					alt="menu"

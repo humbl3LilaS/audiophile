@@ -13,6 +13,11 @@ export default {
 			margin: {
 				30: "120px",
 			},
+			backgroundImage: {
+				heroMobile: "url('/images/image-header-mobile.jpg')",
+				heroTablet: "url('/images/image-header-tablet.jpg')",
+				heroDesktop: "url('/images/image-hero-desktop.jpg')",
+			},
 		},
 	},
 	plugins: [],
