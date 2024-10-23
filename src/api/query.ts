@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllHeadphones } from "./api";
+import { getProductByCategory } from "./api";
 
-export const useGetAllHeadphones = () => {
+export const useGetProductByCategory = (category: string) => {
 	return useQuery({
-		queryKey: ["headphones"],
-		queryFn: getAllHeadphones,
+		queryKey: [category],
+		queryFn: () => getProductByCategory(category),
 		staleTime: 24 * 60 * 1000,
 	});
 };

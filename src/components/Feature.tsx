@@ -4,7 +4,7 @@ import Image from "./Image";
 const Feature = () => {
 	return (
 		<section className="px-6 md:px-10 lg:px-40">
-			<div className="px-6 py-14 mb-6 bg-primary rounded-lg overflow-y-hidden lg:flex items-center justify-center gap-x-[140px] lg:pb-0">
+			<div className="px-6 py-14 mb-6 bg-primary rounded-lg overflow-y-hidden lg:flex items-center justify-center gap-x-[140px] lg:pb-0 lg:mb-12">
 				<Image
 					srcMobile="/images/image-speaker-zx9-mobile.png"
 					srcDesktop="/images/image-speaker-zx9-desktop.png"
@@ -26,7 +26,7 @@ const Feature = () => {
 					</Link>
 				</article>
 			</div>
-			<div className="px-6 py-28 mb-6 bg-paleGray rounded-lg bg-zx7Mobile bg-cover bg-center md:px-16 md:bg-zx7Tablet lg:px-24 lg:bg-zx7Desktop">
+			<div className="px-6 py-28 mb-6 bg-paleGray rounded-lg bg-zx7Mobile bg-cover bg-center md:px-16 md:bg-zx7Tablet lg:px-24 lg:bg-zx7Desktop lg:mb-12">
 				<h2 className="mb-8 text-3xl uppercase font-bold tracking-wider">
 					zx7 speaker
 				</h2>

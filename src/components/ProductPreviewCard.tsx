@@ -8,15 +8,15 @@ type ProductPreviewCardProps = {
 
 const ProductPreviewCard = ({ data }: ProductPreviewCardProps) => {
 	return (
-		<article className="mb-30 last:mb-0 lg:grid grid-cols-2 gap-x-20">
+		<article className="mb-30 last:mb-0 lg:grid grid-cols-2 gap-x-20 group">
 			<Image
 				srcMobile={data?.category_image[0]}
 				srcTablet={data?.category_image[1]}
 				srcDesktop={data?.category_image[2]}
-				className="mb-8 rounded-lg md:w-full"
+				className="mb-8 rounded-lg md:w-ful group-even:col-start-2 group-even:row-start-1"
 			/>
 
-			<div className="lg:flex flex-col justify-center ">
+			<div className="lg:flex flex-col justify-center group-even:col-start-1 group-even:row-start-1">
 				{data?.new && (
 					<p className="mb-6 text-primary tracking-[10px] uppercase text-center lg:text-left lg:mb-8">
 						new product

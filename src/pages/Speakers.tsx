@@ -2,8 +2,8 @@ import { useGetProductByCategory } from "../api/query";
 import ProductPreview from "../components/ProductPreview";
 import ProductPreviewCard from "../components/ProductPreviewCard";
 
-const Headphones = () => {
-	const { data: headphones } = useGetProductByCategory("headphones");
+const Speakers = () => {
+	const { data: speakers } = useGetProductByCategory("speakers");
 
 	return (
 		<section className="">
@@ -11,8 +11,8 @@ const Headphones = () => {
 				Headphones
 			</h1>
 			<div className="px-6 py-16 md:px-10 lg:px-40">
-				{headphones &&
-					headphones.map((item) => (
+				{speakers &&
+					speakers.map((item) => (
 						<ProductPreviewCard
 							key={item.$id}
 							data={item}
@@ -24,4 +24,4 @@ const Headphones = () => {
 	);
 };
 
-export default Headphones;
+export default Speakers;
