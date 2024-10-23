@@ -1,12 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
+import Headphones from "./pages/Headphones";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Layout />,
-		children: [{ index: true, element: <Home /> }],
+		children: [
+			{ index: true, element: <Home /> },
+			{ path: "headphones", element: <Headphones /> },
+		],
 	},
 ]);
 

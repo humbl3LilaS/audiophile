@@ -25,7 +25,7 @@ const Footer = () => {
 				</ul>
 			</nav>
 			<div className="md:flex md:flex-wrap justify-between lg:items-end">
-				<p className="mb-12 text-white/50 text-center md:max-w-[680px] md:text-left lg:order-1">
+				<p className="mb-12 text-white/50 text-center md:max-w-[680px] md:text-left lg:order-1 lg:max-w-[580px]">
 					Audiophile is an all in one stop to fulfill your audio needs. We're a
 					small team of music lovers and sound specialists who are devoted to
 					helping you get the most out of personal audio. Come and visit our

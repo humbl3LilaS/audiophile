@@ -10,7 +10,7 @@ const Layout = () => {
 				<NavBar />
 			</div>
 			<Outlet />
-			<div className="px-6 my-30 lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-x-[120px] lg:px-40 lg:mt-20">
+			<div className="px-6 mb-30 lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-x-[120px] lg:px-40 lg:mt-20">
 				<Image
 					srcMobile="/images/mobile/image-best-gear-mobile.jpg"
 					srcTablet="/images/tablet/image-best-gear-tablet.jpg"
