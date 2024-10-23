@@ -6,9 +6,12 @@ export default {
 			colors: {
 				primary: "#D87D4A",
 				secondary: "#FBAF85",
-				text: "#101010",
+				darkBlack: "#101010",
 				paleGray: "#F1F1F1",
 				paleWhite: "#FAFAFA",
+			},
+			margin: {
+				30: "120px",
 			},
 		},
 	},
