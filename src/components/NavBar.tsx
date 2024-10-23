@@ -17,16 +17,16 @@ const NavBar = () => {
 					/>
 				</h1>
 				<ul className="hidden text-white uppercase font-bold lg:flex gap-x-9">
-					<li>
+					<li className="transition-colors duration-500 hover:text-primary">
 						<Link to="/">Home</Link>
 					</li>
-					<li>
+					<li className="transition-colors duration-500 hover:text-primary">
 						<Link to="/headphones">Headphones</Link>
 					</li>
-					<li>
+					<li className="transition-colors duration-500 hover:text-primary">
 						<Link to="/speakers">Speakers</Link>
 					</li>
-					<li>
+					<li className="transition-colors duration-500 hover:text-primary">
 						<Link to="/earphones">Earphones</Link>
 					</li>
 				</ul>

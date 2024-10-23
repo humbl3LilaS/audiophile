@@ -1,3 +1,4 @@
+import Feature from "../components/Feature";
 import Hero from "../components/Hero";
 import ProductPreview from "../components/ProductPreview";
 
@@ -6,6 +7,7 @@ const Home = () => {
 		<div className="">
 			<Hero />
 			<ProductPreview />
+			<Feature />
 		</div>
 	);
 };

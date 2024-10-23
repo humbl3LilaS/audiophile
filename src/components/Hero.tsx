@@ -4,7 +4,7 @@ const Hero = () => {
 			<span className="block w-fit mx-auto mb-4 text-white/50 font-light uppercase tracking-[10px] text-center lg:mx-0">
 				new product
 			</span>
-			<h1 className="mb-6 max-w-[400px] mx-auto uppercase text-3xl text-center font-bold md:text-[56px] md:tracking-[2px] md:leading-[56px] lg:mx-0">
+			<h1 className="mb-6 max-w-[400px] mx-auto uppercase text-3xl text-center font-bold md:text-[56px] md:tracking-[2px] md:leading-[56px] lg:mx-0 lg:text-left">
 				XX99 MARK II headphones
 			</h1>
 			<p className="max-w-[400px] px-3 mb-7 mx-auto text-center lg:mx-0 lg:text-left lg:px-0 lg:max-w-[360px]">
