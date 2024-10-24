@@ -31,7 +31,7 @@ const ProductPreviewCard = ({ data }: ProductPreviewCardProps) => {
 					{data?.description}
 				</p>
 				<Link
-					to={`/headphones/details/${data.$id}`}
+					to={`/products/details/${data.$id}`}
 					className="w-fit py-4 px-7 uppercase font-bold tracking-wide mx-auto block transition-colors duration-700 bg-primary text-white hover:bg-secondary lg:mx-0">
 					see product
 				</Link>
