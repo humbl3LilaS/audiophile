@@ -67,7 +67,7 @@ const ProductDetails = () => {
 								srcMobile={item?.img_url[0]}
 								srcTablet={item?.img_url[1]}
 								srcDesktop={item?.img_url[2]}
-								className={"md:rounded-lg h-full w-full"}
+								className={"rounded-lg h-full w-full"}
 								key={item?.$id}
 							/>
 						</li>

@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
+import Menu from "./Menu";
 
 const NavBar = () => {
 	return (
-		<header>
+		<header className="md:px-10 bg-darkBlack lg:px-40 relative">
 			<nav className="py-9 px-6 flex justify-between items-center  border-b-2 border-b-white/10 bg-darkBlack lg:py-11">
-				<img
-					src="/icons/icon-hamburger.svg"
-					alt="menu"
-					className="aspect-square w-4 block lg:hidden"
-				/>
+				<Menu />
 				<h1 className="text-white font-bold text">
 					<span className="sr-only">audiophile</span>
 					<img

@@ -6,9 +6,7 @@ import Image from "../components/Image";
 const Layout = () => {
 	return (
 		<div>
-			<div className="md:px-10 bg-darkBlack lg:px-40">
-				<NavBar />
-			</div>
+			<NavBar />
 			<Outlet />
 			<div className="px-6 my-30 lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-x-[120px] lg:px-40 lg:mt-20 ">
 				<Image
