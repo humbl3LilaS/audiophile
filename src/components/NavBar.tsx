@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
+import Cart from "./Cart";
 
 const NavBar = () => {
 	return (
@@ -27,10 +28,7 @@ const NavBar = () => {
 						<Link to="/earphones">Earphones</Link>
 					</li>
 				</ul>
-				<img
-					src="/icons/icon-cart.svg"
-					alt="cart"
-				/>
+				<Cart />
 			</nav>
 		</header>
 	);

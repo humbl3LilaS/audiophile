@@ -4,6 +4,7 @@ import Image from "../components/Image";
 import InBoxItems from "../components/InBoxItems";
 import ProductPreview from "../components/ProductPreview";
 import { cn } from "../lib/util";
+import AddToCart from "../components/AddToCart";
 
 const ProductDetails = () => {
 	const { productId } = useParams();
@@ -39,9 +40,10 @@ const ProductDetails = () => {
 						{product?.description}
 					</p>
 					<p className=" mb-8 font-bold text-lg">$ {product?.price}</p>
+					{product && <AddToCart data={product} />}
 				</div>
 			</div>
-			{/* //Todo add quantity controller and cart */}
+
 			<div className="lg:flex lg:mt-40 lg:gap-x-40">
 				<div className="lg:flex-1">
 					<h2 className="mt-20 mb-6 text-2xl font-bold tracking-wider uppercase md:text-3xl md:mb-8 md:mt-30 lg:mt-0">
