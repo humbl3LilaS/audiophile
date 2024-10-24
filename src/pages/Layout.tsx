@@ -10,7 +10,7 @@ const Layout = () => {
 				<NavBar />
 			</div>
 			<Outlet />
-			<div className="px-6 my-30 lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-x-[120px] lg:px-40 lg:my-48">
+			<div className="px-6 my-30 lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-x-[120px] lg:px-40 lg:mt-20 ">
 				<Image
 					srcMobile="/images/mobile/image-best-gear-mobile.jpg"
 					srcTablet="/images/tablet/image-best-gear-tablet.jpg"
@@ -22,7 +22,7 @@ const Layout = () => {
 						Bringing you the
 						<span className="text-secondary"> best</span> audio gear
 					</h2>
-					<p className="text-center md:max-w-[560px] md:mx-auto lg:text-left lg:max-w-[440px]">
+					<p className="text-center md:max-w-[560px] md:mx-auto lg:text-left lg:max-w-[440px] lg:mx-0">
 						Located at the heart of New York City, Audiophile is the premier
 						store for high end headphones, earphones, speakers, and audio
 						accessories. We have a large showroom and luxury demonstration rooms

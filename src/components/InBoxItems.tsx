@@ -4,7 +4,7 @@ const InBoxItems = ({ product_id }: { product_id: string }) => {
 	const { data: includes } = useGetIncludedItems(product_id);
 
 	return (
-		<div>
+		<div className="md:flex-1">
 			<ul className="flex flex-col gap-y-4">
 				{includes &&
 					includes.map((item) => (
