@@ -54,7 +54,7 @@ const ProductPreview = () => {
 						earphones
 					</h2>
 					<Link
-						to={"earphones"}
+						to={"/earphones"}
 						className="w-full flex items-center gap-x-4 justify-center font-bold">
 						<span className="uppercase tracking-wide text-black/50 transition-colors duration-500 group-hover:text-primary">
 							shop

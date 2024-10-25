@@ -10,7 +10,7 @@ type CartStore = {
 	emptyCart: () => void;
 };
 
-type Cart = {
+export type Cart = {
 	item: Item;
 	count: number;
 };

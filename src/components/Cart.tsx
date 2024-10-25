@@ -1,7 +1,7 @@
 import { MouseEventHandler, useState } from "react";
 import { useCartStore } from "../store/cartStore";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Cart = () => {
 	const itemCount = useCartStore((state) => state.totalItem);
@@ -11,9 +11,14 @@ const Cart = () => {
 	const addToCart = useCartStore((state) => state.addToCart);
 	const removeFromCart = useCartStore((state) => state.removeFromCart);
 
+	const navigate = useNavigate();
+
+
 	const [cartVisible, setCartVisible] = useState(false);
 
-	const cartToggler: MouseEventHandler<HTMLDivElement> = (e) => {
+	const cartToggler: MouseEventHandler<HTMLDivElement | HTMLButtonElement> = (
+		e,
+	) => {
 		e.stopPropagation();
 		if (!cartVisible) {
 			disablePageScroll();
@@ -23,6 +28,11 @@ const Cart = () => {
 			setCartVisible(false);
 		}
 	};
+
+	const checkoutBtnHandler:MouseEventHandler<HTMLButtonElement> = (evt) => {
+		cartToggler(evt);
+		navigate("/checkout", {state: cart});
+	}
 
 	return (
 		<div>
@@ -88,11 +98,14 @@ const Cart = () => {
 							<span className="font-medium text-black/50 uppercase">Total</span>
 							<span className="font-bold text-lg">$ {totalAmount}</span>
 						</p>
-						<Link
-							to="/checkout"
-							className=" w-full py-4 px-8 mt-6 block bg-primary text-white font-bold uppercase tracking-wide text-center">
+						<button
+							className=" w-full py-4 px-8 mt-6 block bg-primary text-white font-bold uppercase tracking-wide text-center
+								disabled:bg-secondary
+							"
+							disabled={itemCount === 0}
+							onClick={checkoutBtnHandler}>
 							Checkout
-						</Link>
+						</button>
 					</div>
 				</div>
 			)}
