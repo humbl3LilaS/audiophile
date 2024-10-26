@@ -90,7 +90,7 @@ const CheckoutPopup = ({isValid, cart}: CheckoutPopupProps) => {
                             </div>
                         </div>
                         <Link to={"/"}
-                              className={"block px-8 py-4 mt-6 text-center bg-primary font-bold text-white uppercase"}
+                              className={"block px-8 py-4 mt-6 text-center bg-primary font-bold text-white uppercase transition-colors duration-500 hover:bg-secondary"}
                               onClick={backToHomeController}
                         >back to home</Link>
                     </div>

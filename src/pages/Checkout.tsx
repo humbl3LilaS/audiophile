@@ -7,6 +7,7 @@ import PaymentMethodSelector from "../components/PaymentMethodSelector";
 import {Cart} from "../store/cartStore.ts";
 import {useEffect, useMemo} from "react";
 import CheckoutPopup from "../components/CheckoutPopup.tsx";
+import {cn} from "../lib/util.ts";
 
 
 const Checkout = () => {
@@ -16,14 +17,13 @@ const Checkout = () => {
     }, [state]);
 
 
-
     const {
         handleSubmit,
         control,
         register,
         watch,
-        reset,
-        formState: {isValid},
+        resetField,
+        formState: {isValid, errors},
     } = useForm<CheckoutSchemaType>({
         resolver: zodResolver(CheckoutSchema),
         mode: "onBlur",
@@ -36,9 +36,10 @@ const Checkout = () => {
 
     useEffect(() => {
         if (paymentMethod !== "eMoney") {
-            reset({eMoneyPin: undefined, eMoneyNumber: undefined})
+            resetField("eMoneyPin")
+            resetField("eMoneyNumber")
         }
-    }, [paymentMethod, reset]);
+    }, [paymentMethod]);
 
     return (
         <Section className="my-4 bg-paleWhite md:py-20">
@@ -62,14 +63,15 @@ const Checkout = () => {
                             {/*name-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.name && "text-red-500")}
                                     htmlFor="name">
-                                    Name
+                                    <span>Name</span>
+                                    {errors.name && <span className={"text-red-500 font-medium text-sm"}>{errors.name.message}</span>}
                                 </label>
                                 <input
                                     id="name"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.name && "border-2 border-red-600")}
                                     placeholder="Super edelweiss"
                                     {...register("name")}
                                 />
@@ -79,14 +81,15 @@ const Checkout = () => {
                             {/*email-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.email && "text-red-500")}
                                     htmlFor="email">
-                                    Email Address
+                                    <span>Email Address</span>
+                                    {errors.email && <span className={"text-red-500 font-medium text-sm"}>{errors.email.message}</span>}
                                 </label>
                                 <input
                                     id="email"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.email && "border-2 border-red-600")}
                                     placeholder="superedelweiss@gmail.com"
                                     {...register("email")}
                                 />
@@ -96,14 +99,15 @@ const Checkout = () => {
                             {/*phone-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.phoneNumber && "text-red-500")}
                                     htmlFor="phone">
-                                    Phone Number
+                                    <span>Phone Number</span>
+                                    {errors.phoneNumber && <span className={"text-red-500 font-medium text-sm"}>{errors.phoneNumber.message}</span>}
                                 </label>
                                 <input
                                     id="phone"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.phoneNumber && "border-2 border-red-600")}
                                     placeholder="09*********"
                                     {...register("phoneNumber")}
                                 />
@@ -118,14 +122,15 @@ const Checkout = () => {
                             {/*address-start*/}
                             <div className={"md:col-span-2"}>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.address && "text-red-500")}
                                     htmlFor="address">
-                                    Your Address
+                                    <span>Your Address</span>
+                                    {errors.address && <span className={"text-red-500 font-medium text-sm"}>{errors.address.message}</span>}
                                 </label>
                                 <input
                                     id="address"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.address && "border-2 border-red-600")}
                                     placeholder="1337 super"
                                     {...register("address")}
                                 />
@@ -135,14 +140,15 @@ const Checkout = () => {
                             {/*zip-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.zip && "text-red-500")}
                                     htmlFor="zip">
-                                    Zip Code
+                                    <span>Zip Code</span>
+                                    {errors.zip && <span className={"text-red-500 font-medium text-sm"}>{errors.zip.message}</span>}
                                 </label>
                                 <input
                                     id="zip"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.zip && "border-2 border-red-600")}
                                     placeholder="098911"
                                     {...register("zip")}
                                 />
@@ -152,14 +158,15 @@ const Checkout = () => {
                             {/*city-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.city && "text-red-500")}
                                     htmlFor="city">
-                                    City
+                                    <span>City</span>
+                                    {errors.city && <span className={"text-red-500 font-medium text-sm"}>{errors.city.message}</span>}
                                 </label>
                                 <input
                                     id="city"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.city && "border-2 border-red-600")}
                                     placeholder="Yangon"
                                     {...register("city")}
                                 />
@@ -169,14 +176,15 @@ const Checkout = () => {
                             {/*country-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.country && "text-red-500")}
                                     htmlFor="country">
-                                    Country
+                                    <span>Country</span>
+                                    {errors.country && <span className={"text-red-500 font-medium text-sm"}>{errors.country.message}</span>}
                                 </label>
                                 <input
                                     id="country"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.country && "border-2 border-red-600")}
                                     placeholder="Myanmar"
                                     {...register("country")}
                                 />
@@ -196,14 +204,15 @@ const Checkout = () => {
                             {/*card-number-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.eMoneyNumber && "text-red-500")}
                                     htmlFor="cardNumber">
-                                    e-Money Number
+                                    <span>e-Money Number</span>
+                                    {errors.eMoneyNumber && <span className={"text-red-500 font-medium text-sm"}>{errors.eMoneyNumber.message}</span>}
                                 </label>
                                 <input
                                     id="cardNumber"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.eMoneyNumber && "border-2 border-red-600")}
                                     placeholder="12345678"
                                     {...register("eMoneyNumber")}
                                 />
@@ -213,14 +222,15 @@ const Checkout = () => {
                             {/*pin-number-start*/}
                             <div>
                                 <label
-                                    className="mb-2 block font-bold"
+                                    className={cn("mb-2 font-bold flex justify-between", errors.eMoneyPin && "text-red-500")}
                                     htmlFor="cardPin">
-                                    e-Money Pin
+                                    <span>e-Money Pin</span>
+                                    {errors.eMoneyPin && <span className={"text-red-500 font-medium text-sm"}>{errors.eMoneyPin.message}</span>}
                                 </label>
                                 <input
                                     id="cardPin"
                                     type="text"
-                                    className="block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold"
+                                    className={cn("block w-full py-4 px-6 border border-[#cfcfcf] rounded-lg placeholder:text-black/40 placeholder:font-bold focus:outline-none focus:border-primary", errors.eMoneyPin && "border-2 border-red-600")}
                                     placeholder="6891"
                                     {...register("eMoneyPin")}
                                 />

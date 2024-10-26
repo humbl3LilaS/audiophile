@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const Hero = () => {
 	return (
 		<section className="px-6 py-28 bg-darkBlack text-white bg-heroMobile bg-cover bg-bottom md:py-40 md:bg-heroTablet lg:py-30 lg:bg-heroDesktop lg:px-40">
@@ -11,9 +13,9 @@ const Hero = () => {
 				Experience natural, lifelike audio and exceptional build quality made
 				for the passionate music enthusiast
 			</p>
-			<button className="py-4 px-7 uppercase font-bold tracking-wide mx-auto block transition-colors duration-700 bg-primary hover:bg-secondary lg:mx-0">
+			<Link to={"/headphones#XX99 Mark II"} className="py-4 px-7 w-fit uppercase font-bold tracking-wide mx-auto block transition-colors duration-700 bg-primary hover:bg-secondary lg:mx-0">
 				see product
-			</button>
+			</Link>
 		</section>
 	);
 };

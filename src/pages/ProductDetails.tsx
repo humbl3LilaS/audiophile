@@ -64,7 +64,9 @@ const ProductDetails = () => {
 						<li
 							className={cn(
 								idx === 2 && "col-start-2 col-end-3 row-start-1 row-span-2",
-							)}>
+							)}
+							key={idx}
+						>
 							<Image
 								srcMobile={item?.img_url[0]}
 								srcTablet={item?.img_url[1]}

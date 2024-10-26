@@ -20,7 +20,7 @@ const Feature = () => {
 						truly remarkable sound.
 					</p>
 					<Link
-						to={"/speaker/zx9"}
+						to={"/speakers#zx9"}
 						className="w-fit px-8 py-4 mx-auto block bg-darkBlack uppercase tracking-wide text-white font-bold transition-colors duration-500 hover:bg-[#4c4c4c]">
 						see product
 					</Link>
@@ -31,7 +31,7 @@ const Feature = () => {
 					zx7 speaker
 				</h2>
 				<Link
-					to={"/speaker/zx7"}
+					to={"/speakers#zx7"}
 					className="block w-fit px-8 py-4 border border-darkBlack  font-bold uppercase tracking-wide transition-colors duration-500 hover:bg-darkBlack hover:text-white">
 					see product
 				</Link>
@@ -50,7 +50,7 @@ const Feature = () => {
 						yx1 earphones
 					</h2>
 					<Link
-						to={"/speaker/zx7"}
+						to={"/headphones#zxp"}
 						className="block w-fit px-8 py-4 border border-darkBlack  font-bold uppercase tracking-wide transition-colors duration-500 hover:bg-darkBlack hover:text-white">
 						see product
 					</Link>

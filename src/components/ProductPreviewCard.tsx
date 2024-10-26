@@ -8,7 +8,7 @@ type ProductPreviewCardProps = {
 
 const ProductPreviewCard = ({ data }: ProductPreviewCardProps) => {
 	return (
-		<article className="mb-30 last:mb-0 lg:grid grid-cols-2 gap-x-20 group">
+		<article className="mb-30 last:mb-0 lg:grid grid-cols-2 gap-x-20 group" id={data?.name}>
 			<Image
 				srcMobile={data?.category_image[0]}
 				srcTablet={data?.category_image[1]}

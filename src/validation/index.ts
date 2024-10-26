@@ -4,11 +4,11 @@ export const CheckoutSchema = z.object({
     name: z.string().min(3, {message: "Required"}),
     email: z.string().email({message: "Invalid email"}),
     phoneNumber: z.string().regex(/^09\d{9}$/, {
-        message: "Phone number must start with 09 and have exactly 11 digits.",
+        message: "Invalid Phone number",
     }),
     address: z.string().min(1, {message: "Required"}),
     zip: z.string().regex(/^\d{6}$/, {
-        message: "ZIP code must be exactly 6 digits.",
+        message: "Invalid Zip Code",
     }),
 
     city: z.string().min(1, {message: "Required"}),
@@ -17,25 +17,25 @@ export const CheckoutSchema = z.object({
     eMoneyNumber: z
         .string()
         .regex(/^\d{9}$/, {
-            message: "eMoney number must be exactly 9 digits.",
+            message: "Invalid Card Number",
         }).optional(),
     eMoneyPin: z
         .string()
         .regex(/^\d{4}$/, {
-            message: "eMoney PIN must be exactly 4 digits.",
+            message: "Invalid Pin Number",
         }).optional(),
 }).superRefine((data, ctx) => {
     if (data.method === "eMoney") {
         if (!data.eMoneyNumber) {
             ctx.addIssue({
                 path: ["eMoneyNumber"],
-                message: "eMoney number is required when payment method is eMoney.",
+                message: "Invalid Card Number",
             } as IssueData);
         }
         if (!data.eMoneyPin) {
             ctx.addIssue({
                 path: ["eMoneyPin"],
-                message: "eMoney PIN is required when payment method is eMoney.",
+                message: "Invalid Pin",
             } as IssueData);
         }
     }
