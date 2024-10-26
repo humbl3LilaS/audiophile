@@ -5,14 +5,21 @@ import InBoxItems from "../components/InBoxItems";
 import ProductPreview from "../components/ProductPreview";
 import { cn } from "../lib/util";
 import AddToCart from "../components/AddToCart";
+import ProductCardSkeleton from "../components/ProductCardSkeleton.tsx";
+import Section from "../components/Section.tsx";
 
 const ProductDetails = () => {
 	const { productId } = useParams();
-	const { data: product } = useGetProductById(productId ?? "");
+	const { data: product, isFetching	 } = useGetProductById(productId ?? "");
 	const { data: gallery } = useGetGalleryImage(productId ?? "");
+	if(isFetching) {
+		return  <Section className={"py-14"}>
+			<ProductCardSkeleton />
+		</Section>;
+	}
 
 	return (
-		<section className="p-6 md:px-10 lg:px-40">
+		<Section className={"py-12"}>
 			<Link
 				to="/"
 				className="block mb-6 text-black/50 font-medium text-left">
@@ -79,7 +86,7 @@ const ProductDetails = () => {
 				</ul>
 			)}
 			<ProductPreview />
-		</section>
+		</Section>
 	);
 };
 
