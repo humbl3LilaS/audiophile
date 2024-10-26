@@ -5,11 +5,17 @@ import {CheckoutSchema, CheckoutSchemaType} from "../validation";
 import {zodResolver} from "@hookform/resolvers/zod";
 import PaymentMethodSelector from "../components/PaymentMethodSelector";
 import {Cart} from "../store/cartStore.ts";
-import {useEffect} from "react";
+import {useEffect, useMemo} from "react";
+import CheckoutPopup from "../components/CheckoutPopup.tsx";
 
 
 const Checkout = () => {
     const {state} = useLocation();
+    const totalAmount = useMemo(() => {
+        return state?.reduce((a: number, b: Cart) => a + (b.item.price * b.count), 0)
+    }, [state]);
+
+
 
     const {
         handleSubmit,
@@ -247,13 +253,26 @@ const Checkout = () => {
                             <p className={"ml-auto"}>x{cartItem.count}</p>
                         </div>)}
                     </div>
-                    <button
-                        type="submit"
-                        className=" w-full py-4 px-8 mt-6 block bg-primary text-white font-bold uppercase tracking-wide text-center disabled:bg-secondary"
-                        disabled={!isValid}
-                    >
-                        Continue & Pay
-                    </button>
+                    <div className={"mt-8"}>
+                        <p className={"mb-4 flex items-center justify-between"}>
+                            <span className={"text-black/50 uppercase tracking-wide"}>Total</span>
+                            <span className={"text-darkBlack font-bold text-lg"}>$ {totalAmount}</span>
+                        </p>
+                        <p className={"mb-4 flex items-center justify-between"}>
+                            <span className={"text-black/50 uppercase tracking-wide"}>shipping</span>
+                            <span className={"text-darkBlack font-bold text-lg"}>$ 50</span>
+                        </p>
+                        <p className={"mb-4 flex items-center justify-between"}>
+                            <span className={"text-black/50 uppercase tracking-wide"}>vat (included)</span>
+                            <span className={"text-darkBlack font-bold text-lg"}>$ 1079</span>
+                        </p>
+                        <p className={"mb-4 flex items-center justify-between"}>
+                            <span className={"text-black/50 uppercase tracking-wide"}>grand total</span>
+                            <span className={"text-primary font-bold text-lg"}>$ {totalAmount - 50}</span>
+                        </p>
+                    </div>
+                    <CheckoutPopup isValid={isValid} cart={state}/>
+
                 </div>
             </form>
         </Section>

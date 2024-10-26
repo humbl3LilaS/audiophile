@@ -22,56 +22,58 @@ type Item = {
 };
 
 export const useCartStore = create<CartStore>()(
-	immer((set) => ({
-		cart: [],
-		totalPrice: 0,
-		totalItem: 0,
-		addToCart: (payload) =>
-			set((state) => {
-				const itemsInCart = state.cart.map((item) => item.item.name);
-				if (itemsInCart.indexOf(payload.item.name) < 0) {
-					state.cart.push(payload);
-					state.totalPrice =
-						state.totalPrice + payload.item.price * payload.count;
-					state.totalItem = state.totalItem + payload.count;
-				} else {
-					state.cart = state.cart
-						.filter((item) => (item.item.name = payload.item.name))
-						.map((item) => ({ ...item, count: item.count + payload.count }));
-					state.totalPrice =
-						state.totalPrice + payload.item.price * payload.count;
-					state.totalItem = state.totalItem + payload.count;
-				}
-			}),
-		removeFromCart: (payload) =>
-			set((state) => {
-				const currentCountOfRequestItem = state.cart.filter(
-					(item) => item.item.name === payload,
-				)[0];
-				console.log("itemcount", currentCountOfRequestItem.count);
-				if (currentCountOfRequestItem.count === 1) {
-					state.cart = state.cart.filter((item) => item.item.name !== payload);
-					state.totalPrice =
-						state.totalPrice - currentCountOfRequestItem.item.price;
-					state.totalItem = state.totalItem - 1;
-				} else {
-					state.cart = state.cart.map((item) => {
-						if (item.item.name === payload) {
-							return { ...item, count: item.count - 1 };
-						} else {
-							return item;
-						}
-					});
-					state.totalPrice =
-						state.totalPrice - currentCountOfRequestItem.item.price;
-					state.totalItem = state.totalItem - 1;
-				}
-			}),
-		emptyCart: () =>
-			set((state) => {
-				state.cart = [];
-				state.totalItem = 0;
-				state.totalPrice = 0;
-			}),
-	})),
+	immer((set) => {
+		return ({
+			cart: [],
+			totalPrice: 0,
+			totalItem: 0,
+			addToCart: (payload) =>
+				set((state) => {
+					const itemsInCart = state.cart.map((item) => item.item.name);
+					if (itemsInCart.indexOf(payload.item.name) < 0) {
+						state.cart.push(payload);
+						state.totalPrice =
+							state.totalPrice + payload.item.price * payload.count;
+						state.totalItem = state.totalItem + payload.count;
+					} else {
+						state.cart = state.cart
+							.filter((item) => (item.item.name = payload.item.name))
+							.map((item) => ({...item, count: item.count + payload.count}));
+						state.totalPrice =
+							state.totalPrice + payload.item.price * payload.count;
+						state.totalItem = state.totalItem + payload.count;
+					}
+				}),
+			removeFromCart: (payload) =>
+				set((state) => {
+					const currentCountOfRequestItem = state.cart.filter(
+						(item) => item.item.name === payload,
+					)[0];
+					console.log("itemcount", currentCountOfRequestItem.count);
+					if (currentCountOfRequestItem.count === 1) {
+						state.cart = state.cart.filter((item) => item.item.name !== payload);
+						state.totalPrice =
+							state.totalPrice - currentCountOfRequestItem.item.price;
+						state.totalItem = state.totalItem - 1;
+					} else {
+						state.cart = state.cart.map((item) => {
+							if (item.item.name === payload) {
+								return {...item, count: item.count - 1};
+							} else {
+								return item;
+							}
+						});
+						state.totalPrice =
+							state.totalPrice - currentCountOfRequestItem.item.price;
+						state.totalItem = state.totalItem - 1;
+					}
+				}),
+			emptyCart: () =>
+				set((state) => {
+					state.cart = [];
+					state.totalItem = 0;
+					state.totalPrice = 0;
+				}),
+		});
+	}),
 );
